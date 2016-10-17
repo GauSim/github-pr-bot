@@ -27,7 +27,7 @@ const onPR = (req: any) => {
 let __state = null;
 
 const handler = createHandler({ path: '/webhook', secret: 'test' })
-handler.on('pull_request', function (event) {
+handler.on('*', function (event) {
   __state = event;
   console.log(event);
   console.log("HOOOOK");
