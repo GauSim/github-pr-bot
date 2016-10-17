@@ -16,21 +16,24 @@ Object.keys(events).forEach(function (event) {
 type ParsedRequest = { body: any } & express.Request;
 
 
-// pull_request
-const onPR = (req: any) => {
-
-  const { action, pull_request } = (req.body as { action: 'opened'; pull_request: { title: string } });
-  console.log(action, pull_request)
-}
 
 
 let __state = null;
 
 const handler = createHandler({ path: '/webhook', secret: 'test' })
-handler.on('*', function (event) {
-  __state = event;
-  console.log(event);
-  console.log("HOOOOK");
+handler.on('*', function (event:{payload:ay}) {
+
+  const { pull_request } = event.payload as {
+    action: 'opened';
+    pull_request: {
+      title: string;
+      user: {}
+    }
+  };
+
+  console.log(pull_request);
+  console.log('#############')
+  console.log(pull_request['base']['repo']['full_name'])
 });
 
 
