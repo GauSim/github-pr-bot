@@ -24,28 +24,33 @@ const onPR = (req: any) => {
 }
 
 
-const handler = createHandler({ path: '/webhook', secret: 'myhashsecret' })
+let __state = null;
 
-
-
+const handler = createHandler({ path: '/webhook', secret: 'test' })
 handler.on('pull_request', function (event) {
+  __state = event;
   console.log(event);
   console.log("HOOOOK");
 });
 
 
+const webhook = (req: ParsedRequest, res: express.Response, next: () => void) => {
+  handler(req, res, (error) => {
+    next();
+  });
+};
 
-http.createServer((req: ParsedRequest, res: express.Response) => {
+var app = express();
+app.use(webhook);
+app.get('/', function (req, res) {
+  res.send(JSON.stringify(__state));
+});
 
-  res.end('test from heroku');
-  console.log(`got request`);
-  /*
-    handler(req, res, (error) => {
-      res.statusCode = 404;
-      res.end('no such location');
-      console.log('Error', error);
-  
-    });
-  */
-}).listen(port);
-console.log(`Server online`);
+app.use((req: ParsedRequest, res: express.Response) => {
+  res.statusCode = 404;
+  res.end('no such location');
+})
+app.listen(port, function () {
+  console.log(`Example app listening on port ${port}!`);
+});
+
