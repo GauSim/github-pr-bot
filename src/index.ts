@@ -36,11 +36,15 @@ handler.on('pull_request', function (event) {
 
 http.createServer((req: ParsedRequest, res: express.Response) => {
 
+res.end('test from heroku');
+
+/*
   handler(req, res, (error) => {
     res.statusCode = 404;
     res.end('no such location');
     console.log('Error', error);
 
   });
+*/
 }).listen(1337);
 console.log('Server online');
