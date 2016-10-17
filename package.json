@@ -17,14 +17,13 @@
   "author": "simon gausmann",
   "license": "ISC",
   "dependencies": {
+    "typescript": "^2.0.3",
+    "typings": "^1.4.0",
+    "rimraf": "^2.5.4",
     "body-parser": "/Users/gasi1.15.2",
     "express": "^4.14.0",
     "github-webhook-handler": "/Users/gasi0.6.0",
     "nodemon": "^1.11.0"
   },
-  "devDependencies": {
-    "typescript": "^2.0.3",
-    "typings": "^1.4.0",
-    "rimraf": "^2.5.4"
-  }
+  "devDependencies": {}
 }
