@@ -2,6 +2,7 @@ import * as http from 'http';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
+const port = process.env.PORT || 8080;
 const createHandler = require('github-webhook-handler')
 const events = require('github-webhook-handler/events')
 
@@ -36,15 +37,15 @@ handler.on('pull_request', function (event) {
 
 http.createServer((req: ParsedRequest, res: express.Response) => {
 
-res.end('test from heroku');
-
-/*
-  handler(req, res, (error) => {
-    res.statusCode = 404;
-    res.end('no such location');
-    console.log('Error', error);
-
-  });
-*/
-}).listen(1337);
-console.log('Server online');
+  res.end('test from heroku');
+  console.log(`got request`);
+  /*
+    handler(req, res, (error) => {
+      res.statusCode = 404;
+      res.end('no such location');
+      console.log('Error', error);
+  
+    });
+  */
+}).listen(port);
+console.log(`Server online`);
