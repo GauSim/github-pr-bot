@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "jsx": "react",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "emitDecoratorMetadata": false,
+        "outDir": "./dist",
+        "declaration": true
+    },
+    "files": [
+        "./typings/index.d.ts",
+        "./src/index.ts"
+    ]
+}
