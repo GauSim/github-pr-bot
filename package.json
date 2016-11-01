@@ -4,6 +4,7 @@
   "description": "does fancy stuff",
   "main": "index.js",
   "scripts": {
+    "test": "node ./dist/test",
     "postinstall": "npm run typings && npm run build",
     "pretest": "npm run build",
     "start": "node ./dist",
@@ -25,5 +26,7 @@
     "github-webhook-handler": "^0.6.0",
     "nodemon": "^1.11.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "request": "^2.76.0"
+  }
 }

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2015",
         "jsx": "react",
         "module": "commonjs",
         "noImplicitAny": false,
@@ -9,10 +9,12 @@
         "sourceMap": true,
         "emitDecoratorMetadata": false,
         "outDir": "./dist",
-        "declaration": true
+        "declaration": true,
+        "inlineSourceMap": false
     },
     "files": [
         "./typings/index.d.ts",
-        "./src/index.ts"
+        "./src/index.ts",
+        "./src/test.ts"
     ]
 }
