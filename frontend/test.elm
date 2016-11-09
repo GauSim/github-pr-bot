@@ -60,20 +60,20 @@ update : Msg -> Model -> Model
 update msg model =
     case msg of
         Change Home ->
-            { model | currentPage = accessPageIf model.hasUser (forPage Home) }
+            { model | currentPage = tryAccess (forPage Home) model.hasUser }
 
         Change About ->
-            { model | currentPage = accessPageIf model.hasUser (forPage About) }
+            { model | currentPage = tryAccess (forPage About) model.hasUser }
 
         Login ->
             { model | hasUser = True }
 
         Logout ->
-            { model | hasUser = False }
+            { model | hasUser = False, currentPage = tryAccess Nothing False }
 
 
-accessPageIf : Bool -> Maybe Page -> Maybe Page
-accessPageIf hasUser page =
+tryAccess : Maybe Page -> Bool -> Maybe Page
+tryAccess page hasUser =
     if hasUser then
         page
     else
