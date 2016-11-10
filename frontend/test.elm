@@ -40,7 +40,7 @@ pages =
       }
     , { pageType = About
       , title = "About"
-      , needsUser = False
+      , needsUser = True
       }
     ]
 
@@ -72,12 +72,12 @@ update msg model =
             { model | hasUser = False, currentPage = tryAccess Nothing False }
 
 
-tryAccess : Maybe Page -> Bool -> Maybe Page
+tryAccess : Page -> Bool -> Maybe Page
 tryAccess page hasUser =
-    if hasUser then
-        page
+    if (hasUser == True && page.needsUser == True) then
+        Just page
     else
-        forPage Home
+        Nothing
 
 
 forPage : PageType -> Maybe Page
